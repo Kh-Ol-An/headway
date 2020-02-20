@@ -1,0 +1,51 @@
+.login {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login form {
+  margin-bottom: 10px;
+}
+
+.login input {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.passwordWrap {
+  position: relative;
+}
+
+.btnEye {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+.eye {
+  width: 12px;
+  height: 12px;
+}
+
+.in,
+.or {
+  margin-right: 10px;
+}
+
+.signup {
+  text-decoration: none;
+  color: gray;
+}
+
+.login i {
+  color: red;
+}

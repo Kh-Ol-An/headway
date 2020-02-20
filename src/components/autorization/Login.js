@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as OpenEye } from "../../assets/openEye.svg";
 import { ReactComponent as CloseEye } from "../../assets/closeEye.svg";
+import s from "./Login.module.css";
 
 export default class Login extends Component {
   state = {
@@ -106,7 +107,7 @@ export default class Login extends Component {
       formValid
     } = this.state;
     return (
-      <>
+      <div className={s.login}>
         <form onSubmit={this.handleSubmit}>
           <input
             type="email"
@@ -117,7 +118,7 @@ export default class Login extends Component {
             placeholder="Введите свой email..."
             autoFocus
           />
-          <div>
+          <div className={s.passwordWrap}>
             <input
               type={showPassword}
               name="password"
@@ -126,21 +127,25 @@ export default class Login extends Component {
               required
               placeholder="Введите свой пароль..."
             />
-            <button type="button" onClick={this.onShowPassword}>
-              {showPassword === "text" ? <CloseEye /> : <OpenEye />}
+            <button className={s.btnEye} type="button" onClick={this.onShowPassword}>
+              {showPassword === "text" ? (
+                <CloseEye className={s.eye} />
+              ) : (
+                <OpenEye className={s.eye} />
+              )}
             </button>
           </div>
-          <button type="submit" disabled={!formValid}>
+          <button className={s.in} type="submit" disabled={!formValid}>
             Войдите
           </button>
-          <span>или</span>
-          <Link to="/signup">Зарегистрируйтесь</Link>
+          <span className={s.or}>или</span>
+          <Link className={s.signup} to="/signup">Зарегистрируйтесь</Link>
         </form>
 
         {!formValid && !emailValid && <i>{formErrors.email}</i>}
         {!formValid && !passwordValid && <i>{formErrors.password}</i>}
         <i>{errorLogin || ""}</i>
-      </>
+      </div>
     );
   }
 }

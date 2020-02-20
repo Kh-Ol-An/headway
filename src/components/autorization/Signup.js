@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { ReactComponent as OpenEye } from "../../assets/openEye.svg";
 import { ReactComponent as CloseEye } from "../../assets/closeEye.svg";
+import s from "./Signup.module.css";
 
 export default class Signup extends Component {
   state = {
@@ -93,7 +94,7 @@ export default class Signup extends Component {
       formValid
     } = this.state;
     return (
-      <>
+      <div className={s.signup}>
         <form onSubmit={this.handleSubmit}>
           <input
             type="email"
@@ -104,7 +105,7 @@ export default class Signup extends Component {
             placeholder="Введите свой email..."
             autoFocus
           />
-          <div>
+          <div className={s.passwordWrap}>
             <input
               type={showPassword}
               name="password"
@@ -113,11 +114,19 @@ export default class Signup extends Component {
               required
               placeholder="Введите свой пароль..."
             />
-            <button type="button" onClick={this.onShowPassword}>
-              {showPassword === "text" ? <CloseEye /> : <OpenEye />}
+            <button
+              className={s.btnEye}
+              type="button"
+              onClick={this.onShowPassword}
+            >
+              {showPassword === "text" ? (
+                <CloseEye className={s.eye} />
+              ) : (
+                <OpenEye className={s.eye} />
+              )}
             </button>
           </div>
-          <div>
+          <div className={s.passwordWrap}>
             <input
               type={showPassword}
               name="rePassword"
@@ -126,11 +135,19 @@ export default class Signup extends Component {
               required
               placeholder="Повтори пароль..."
             />
-            <button type="button" onClick={this.onShowPassword}>
-              {showPassword === "text" ? <CloseEye /> : <OpenEye />}
+            <button
+              className={s.btnEye}
+              type="button"
+              onClick={this.onShowPassword}
+            >
+              {showPassword === "text" ? (
+                <CloseEye className={s.eye} />
+              ) : (
+                <OpenEye className={s.eye} />
+              )}
             </button>
           </div>
-          <button type="submit" disabled={!formValid}>
+          <button className={s.btnSignup} type="submit" disabled={!formValid}>
             Зарегистрируйтесь
           </button>
         </form>
@@ -138,7 +155,7 @@ export default class Signup extends Component {
         {!formValid && !emailValid && <i>{formErrors.email}</i>}
         {!formValid && !passwordValid && <i>{formErrors.password}</i>}
         <i>{errorRePassword || ""}</i>
-      </>
+      </div>
     );
   }
 }
